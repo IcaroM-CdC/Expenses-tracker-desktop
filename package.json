@@ -13,8 +13,10 @@
   },
   "main": "background.js",
   "dependencies": {
+    "apexcharts": "^3.30.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-apexcharts": "^1.6.2",
     "vuetify": "^2.4.0"
   },
   "devDependencies": {

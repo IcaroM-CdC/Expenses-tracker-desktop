@@ -1,29 +1,37 @@
 <template>
 	<div id="main-div">
 		<div id="top-bar">
-
+			<TopBar></TopBar>
 		</div>
 		<div id="body">
 			<div id="side-bar">
-
 			</div>
 			<div id="charts-info">
 				<div id="profits-expenses-div">
 					<div class="profit-loan-card">
-						<span class="profit-loan-card-title">Total profits</span>
-						<span class="profit-loan-card-value">R$ 200,00</span>
+						<div class="profit-loan-card-wrapper">
+							<span class="profit-loan-card-title">Total profits</span>
+							<span class="profit-loan-card-value">R$ 200,00</span>
+						</div>
+						<img id="profit-loan-card-image-profit" src="@/assets/lucros.png" />
 					</div>
 					<div class="profit-loan-card">
-						<span class="profit-loan-card-title">Total expenses</span>
-						<span class="profit-loan-card-value">R$ 44,00</span>
+						<div class="profit-loan-card-wrapper">
+							<span class="profit-loan-card-title">Total expenses</span>
+							<span class="profit-loan-card-value">R$ 40,00</span>
+						</div>
+						<img id="profit-loan-card-image-expense" src="@/assets/perda.png" />
 					</div>
 					<div class="profit-loan-card">
-						<span class="profit-loan-card-title">Upcoming</span>
-						<span class="profit-loan-card-value">R$ 4.000,00</span>
+						<div class="profit-loan-card-wrapper">
+							<span class="profit-loan-card-title">Upcoming</span>
+							<span class="profit-loan-card-value">R$ 4.000,00</span>
+						</div>
+						<img id="profit-loan-card-image-upcoming" src="@/assets/moedas.png" />
 					</div>
 				</div>
 				<div id="chart">
-<!--					<Chart options={chartOptions} type="line" height={"95%"} width={"95%"} series={chartSeries.series} ></Chart>-->
+<!--					<Chart></Chart>-->
 				</div>
 			</div>
 			<div id="profits-expenses">
@@ -35,9 +43,17 @@
 </template>
 
 <script>
-	export default {
+	// import Chart from "./chart"
+	import TopBar from "./topBar"
 
+	export default {
+		name: "tracker",
+		components: {
+			// Chart
+			TopBar
+		}
 	}
+
 </script>
 
 <style>
@@ -50,12 +66,14 @@
 		width: 100%;
 		height: 100vh;
 		background-color: #2B2E44;
+		box-shadow: 1px solid ;
 	}
 
 	#top-bar {
-		background-color: #fff;
+		background-color: #2E3247;
 		height: 10vh;
 		width: 100%;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
 	}
 
 	#body {
@@ -73,7 +91,7 @@
 		flex-direction: column;
 		width: 15%;
 		margin-left: 2vw;
-		background-color:#2E3247;
+		background-color: #2E3247;
 		border-radius: 3px;
 	}
 
@@ -111,26 +129,49 @@
 
 	.profit-loan-card {
 		display: flex;
-		flex-direction: column;
-		align-items: start;
-		justify-content: center;
+		flex-direction: row;
+		align-items: center;
+		justify-content: start;
 		height:100%;
 		width: 32.5%;
-		background-color:#2E3247;
+		background-color: #2E3247;
 		border-radius: 3px;
+	}
+
+	.profit-loan-card-wrapper {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		width: 70%;
+		background-color: #2E3247;
+		margin-right: 1vw;
+		justify-content: center;
+		align-items: start;
 	}
 
 	.profit-loan-card-title {
 		color: #8E8E9E;
-		margin-left: 2vw;
+		margin-left: 1vw;
 		font-size: 3vh;
 		margin-bottom: 1vh;
 	}
 
 	.profit-loan-card-value {
 		color: #FEFEFF;
-		margin-left: 2vw;
-		font-size: 3.5vh
+		margin-left: 1vw;
+		font-size: 3vh
+	}
+
+	#profit-loan-card-image-profit {
+		width: 20%;
+	}
+
+	#profit-loan-card-image-expense {
+		width: 20%;
+	}
+
+	#profit-loan-card-image-upcoming {
+		width: 20%;
 	}
 
 	/* ###################### */
@@ -142,7 +183,10 @@
 		width: 100%;
 		height: 67vh;
 		margin-top: 2vh;
-		background-color:#2E3247;
+		border-radius: 2px;
+		/*background-color: #2E3247;*/
+		background-color: #33374A;
 	}
 
 </style>
+

@@ -21,5 +21,9 @@
 </script>
 <style>
 
+	/* this comand remove the damn scrollbar */
+	::-webkit-scrollbar {
+		display: none;
+	}
 </style>
-<!--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-->
+<!--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-->
