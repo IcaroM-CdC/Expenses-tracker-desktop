@@ -5,7 +5,9 @@
 		</div>
 		<div id="body">
 			<div id="side-bar">
-				<div id="side-bar-wrapper"></div>
+				<div id="side-bar-wrapper">
+				</div>
+				<Button_new></Button_new>
 			</div>
 			<div id="charts-info">
 				<div id="profits-expenses-div">
@@ -30,16 +32,22 @@
 						</div>
 						<img id="profit-loan-card-image-upcoming" src="@/assets/moneyStack.png" />
 					</div>
+					<div class="profit-loan-card">
+						<div class="profit-loan-card-wrapper">
+							<span class="profit-loan-card-title">Balance</span>
+							<span class="profit-loan-card-value">R$ 160,00</span>
+						</div>
+						<img id="profit-loan-card-image-balance" src="@/assets/bank.png" />
+					</div>
 				</div>
 				<div id="chart">
 				</div>
 			</div>
-			<div id="profits-expenses">
-				<div id="profits-expenses-list-wrapper">
+		</div>
+		<div id="new-profit-expense-div">
 
-				</div>
-				<Button_new></Button_new>
-			</div>
+			<ExpenseProfitForm id="expense-profit-form"></ExpenseProfitForm>
+
 		</div>
 	</div>
 </template>
@@ -48,13 +56,15 @@
 	// import Chart from "./chart"
 	import TopBar from "./topBar"
 	import Button_new from "../singleComponents/button"
+	import ExpenseProfitForm from "./form"
 
 	export default {
 		name: "tracker",
 		components: {
 			// Chart,
 			TopBar,
-			Button_new
+			Button_new,
+			ExpenseProfitForm
 		},
 	}
 
@@ -100,56 +110,16 @@
 		border-radius: 3px;
 	}
 
-	/*#side-bar-wrapper {*/
-	/*	display: flex;*/
-	/*	flex-direction: column;*/
-	/*	width: 100%;*/
-	/*	height: 100%;*/
-	/*	background-color: white;*/
-	/*}*/
-
-	/****************************/
-
-
-	#charts-info {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 60%;
-		margin-left: 1vw;
-		background-color: #2B2E44;
-		border-radius: 3px;
-	}
-
-	/* profits and expenses list style*/
-
-	#profits-expenses {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 19%;
-		margin-left: 1vw;
-		background-color: #2E3247;
-		border-radius: 3px;
-	}
-
-	#profits-expenses-list-wrapper {
+	#side-bar-wrapper {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 		height: 92%;
 		background-color: #2E3247;
+		border-bottom: 10px solid #2B2E44;
 	}
 
-	#profits-expenses-list-button {
-
-	}
-
-	.profits-expenses-list-element {
-
-	}
-
-	/****************************/
+	/* profits and expenses list style*/
 
 	#profits-expenses-div {
 		display: flex;
@@ -169,7 +139,7 @@
 		align-items: center;
 		justify-content: start;
 		height:100%;
-		width: 32.5%;
+		width: 24%;
 		background-color: #2E3247;
 		border-radius: 3px;
 	}
@@ -210,6 +180,10 @@
 		width: 20%;
 	}
 
+	#profit-loan-card-image-balance{
+		width: 20%;
+	}
+
 	/* ###################### */
 
 	#chart {
@@ -224,6 +198,39 @@
 		background-color: #33374A;
 	}
 
+	#charts-info {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		width: 80%;
+		margin-left: 1vw;
+		background-color: #2B2E44;
+		border-radius: 3px;
+	}
+
+	/* expenses and profits add screen */
+
+	#new-profit-expense-div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: #2B2E44;
+		opacity: 0.9;
+
+	}
+
+	#expense-profit-form {
+		width: 100%;
+		height: 100%;
+		background-color: #2B2E44;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 
 </style>
 

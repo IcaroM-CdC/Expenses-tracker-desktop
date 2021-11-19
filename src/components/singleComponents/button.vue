@@ -98,7 +98,6 @@ export default {
 	.button {
 		border: none;
 		outline: none;
-		background-color: purple;
 		padding: 1rem 90px 1rem 2rem;
 		position: relative;
 		/*border-radius: 0px;*/
@@ -107,10 +106,11 @@ export default {
 		letter-spacing: 0.7px;
 		background-color: #5086bd;
 		color: #fff;
-		font-size: 21px;
+		font-size: 18px;
 		font-family: "Lato", sans-serif;
 		cursor: pointer;
 		box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
+		height: 8%;
 	}
 
 	.button:active {
