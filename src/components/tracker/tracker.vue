@@ -5,6 +5,7 @@
 		</div>
 		<div id="body">
 			<div id="side-bar">
+				<div id="side-bar-wrapper"></div>
 			</div>
 			<div id="charts-info">
 				<div id="profits-expenses-div">
@@ -13,45 +14,48 @@
 							<span class="profit-loan-card-title">Total profits</span>
 							<span class="profit-loan-card-value">R$ 200,00</span>
 						</div>
-						<img id="profit-loan-card-image-profit" src="@/assets/lucros.png" />
+						<img id="profit-loan-card-image-profit" src="@/assets/moneyUp.png" />
 					</div>
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Total expenses</span>
 							<span class="profit-loan-card-value">R$ 40,00</span>
 						</div>
-						<img id="profit-loan-card-image-expense" src="@/assets/perda.png" />
+						<img id="profit-loan-card-image-expense" src="@/assets/moneyDown.png" />
 					</div>
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Upcoming</span>
 							<span class="profit-loan-card-value">R$ 4.000,00</span>
 						</div>
-						<img id="profit-loan-card-image-upcoming" src="@/assets/moedas.png" />
+						<img id="profit-loan-card-image-upcoming" src="@/assets/moneyStack.png" />
 					</div>
 				</div>
 				<div id="chart">
-<!--					<Chart></Chart>-->
 				</div>
 			</div>
 			<div id="profits-expenses">
+				<div id="profits-expenses-list-wrapper">
 
+				</div>
+				<Button_new></Button_new>
 			</div>
 		</div>
-
 	</div>
 </template>
 
 <script>
 	// import Chart from "./chart"
 	import TopBar from "./topBar"
+	import Button_new from "../singleComponents/button"
 
 	export default {
 		name: "tracker",
 		components: {
-			// Chart
-			TopBar
-		}
+			// Chart,
+			TopBar,
+			Button_new
+		},
 	}
 
 </script>
@@ -66,7 +70,6 @@
 		width: 100%;
 		height: 100vh;
 		background-color: #2B2E44;
-		box-shadow: 1px solid ;
 	}
 
 	#top-bar {
@@ -86,6 +89,8 @@
 		margin-bottom: 4vh;
 	}
 
+	/* Side bar elements styles */
+
 	#side-bar {
 		display: flex;
 		flex-direction: column;
@@ -94,6 +99,17 @@
 		background-color: #2E3247;
 		border-radius: 3px;
 	}
+
+	/*#side-bar-wrapper {*/
+	/*	display: flex;*/
+	/*	flex-direction: column;*/
+	/*	width: 100%;*/
+	/*	height: 100%;*/
+	/*	background-color: white;*/
+	/*}*/
+
+	/****************************/
+
 
 	#charts-info {
 		display: flex;
@@ -105,15 +121,35 @@
 		border-radius: 3px;
 	}
 
+	/* profits and expenses list style*/
+
 	#profits-expenses {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		width: 19%;
 		margin-left: 1vw;
-		background-color:#2E3247;
+		background-color: #2E3247;
 		border-radius: 3px;
 	}
+
+	#profits-expenses-list-wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 92%;
+		background-color: #2E3247;
+	}
+
+	#profits-expenses-list-button {
+
+	}
+
+	.profits-expenses-list-element {
+
+	}
+
+	/****************************/
 
 	#profits-expenses-div {
 		display: flex;
@@ -187,6 +223,7 @@
 		/*background-color: #2E3247;*/
 		background-color: #33374A;
 	}
+
 
 </style>
 

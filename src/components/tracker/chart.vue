@@ -1,6 +1,6 @@
 <template id="main">
 
-	<apexcharts width="340%" height="600vh" type="line" :options="chartOptions" :series="series"></apexcharts>
+	<apexcharts width="1000" height="600vh" type="line" :options="chartOptions" :series="series"></apexcharts>
 
 </template>
 
@@ -18,7 +18,7 @@ export default {
 			chartOptions: {
 				// colors:['#F44336', '#E91E63', '#9C27B0'],
 				chart: {
-					// background: "#F44336",
+					background: "#F44336",
 
 					type: 'line',
 					zoom: {
