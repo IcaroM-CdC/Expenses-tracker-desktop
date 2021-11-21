@@ -1,9 +1,9 @@
 <template>
-	<button class="button">
-	<span class="button__text">
-<!--		<span>b</span><span>u</span>y<span> </span><span>s</span><span>t</span><span>u</span><span>f</span><span>f</span>-->
+	<button class="button" v-on:click="handleNewTransactionBtnClick">
+		<span class="button__text">
+		<!--		<span>b</span><span>u</span>y<span> </span><span>s</span><span>t</span><span>u</span><span>f</span><span>f</span>-->
 			<span>New Transaction</span>
-	</span>
+		</span>
 		<svg class="button__svg" role="presentational" viewBox="0 0 600 600">
 			<defs>
 				<clipPath id="myClip">
@@ -34,9 +34,26 @@
 </template>
 
 <script>
-// export default {
-	name: "Button_new"
-}
+	export default {
+		name: "Button_new",
+
+		data: () => ({
+			newTransactionState: false,
+		}),
+
+		props: {
+
+		},
+
+		methods: {
+			handleNewTransactionBtnClick: function() {
+				this.newTransactionState = true
+				this.$emit("newTransactionState", this.newTransactionState)
+			}
+		}
+
+	}
+
 </script>
 
 <style>

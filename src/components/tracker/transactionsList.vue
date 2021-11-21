@@ -7,6 +7,13 @@
 			<span class="list-element-description">Lorem Ipsum is simply dummy text of the printing</span>
 
 		</div>
+		<div class="list-element-expense">
+			<div class="list-element-side-card-expense"></div>
+			<img class="list-element-img" src="@/assets/creditCard.png" />
+			<span class="list-element-value">44,00</span>
+			<span class="list-element-description">Lorem Ipsum is simply dummy text of the printing</span>
+
+		</div>
 	</div>
 </template>
 
@@ -22,10 +29,37 @@ export default {
 		position: relative;
 		width: 100%;
 		height: 100%;
-		background-color: #4053b6;
+		background-color: #2E3247;
 		/*background-color: #2E3247;*/
 		border-radius: 3px;
 	}
+
+
+	.list-element-expense {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		position: relative;
+		width: 100%;
+		height: 12%;
+		background-color: #3E4155;
+		margin-bottom: 0.2%;
+	}
+
+	.list-element-side-card-expense {
+		display: flex;
+		width: 1%;
+		height: 100%;
+		position: relative;
+		align-items: center;
+		justify-content: start;
+		background: #E05F5F;
+		margin-right: 4%;
+		border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
+
+	/**/
 
 	.list-element {
 		display: flex;
@@ -35,7 +69,7 @@ export default {
 		width: 100%;
 		height: 12%;
 		background-color: #3E4155;
-
+		margin-bottom: 0.2%;
 	}
 	.list-element-side-card {
 		display: flex;
@@ -46,6 +80,8 @@ export default {
 		justify-content: start;
 		background: #38C183;
 		margin-right: 4%;
+		border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;
 	}
 	.list-element-img {
 		width: 4.4%;

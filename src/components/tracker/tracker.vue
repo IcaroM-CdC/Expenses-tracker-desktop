@@ -8,14 +8,16 @@
 				<div id="side-bar-wrapper">
 					<SideBar/>
 				</div>
-<!--				<Button_new></Button_new>-->
-				<v-btn
-					x-large
-					color="#38C183"
-					v-on:click="handleNewTransactionBtnClick"
-				>
-					<span>Confirm</span>
-				</v-btn>
+					<Button_new @newTransactionState="a">
+
+					</Button_new>
+<!--				<v-btn-->
+<!--					x-large-->
+<!--					color="#38C183"-->
+<!--					v-on:click="handleNewTransactionBtnClick"-->
+<!--				>-->
+<!--					<span>Confirm</span>-->
+<!--				</v-btn>-->
 			</div>
 			<div id="charts-info">
 				<div id="profits-expenses-div">
@@ -24,7 +26,7 @@
 							<span class="profit-loan-card-title">Total profits</span>
 							<span class="profit-loan-card-value">R$ 200,00</span>
 						</div>
-						<img id="profit-loan-card-image-profit" src="@/assets/moneyUp.png" />
+						<img id="profit-loan-card-image-profit" src="@/assets/moneyUp.png"  alt=""/>
 					</div>
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
@@ -64,7 +66,7 @@
 
 <script>
 	// import Chart from "./chart"
-	// import Button_new from "../singleComponents/button"
+	import Button_new from "../singleComponents/button"
 	import ExpenseProfitForm from "./form"
 	import TopBar from "./topBar"
 	import SideBar from "./sideBar"
@@ -80,7 +82,7 @@
 
 		components: {
 			// Chart,
-			// Button_new,
+			Button_new,
 			ExpenseProfitForm,
 			TransactionsList,
 			TopBar,
@@ -91,6 +93,10 @@
 			handleNewTransactionBtnClick: function(){
 				this.$refs.form.setNewTransactionState(true);
 			},
+			a: function(e){
+				console.log(e)
+				this.handleNewTransactionBtnClick()
+			}
 
 		},
 		// beforeMount() {
