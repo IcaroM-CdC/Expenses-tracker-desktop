@@ -1,0 +1,11 @@
+{
+    "type": "sqlite",
+    "host": "localhost",
+    "database": "src/persistence/database.sqlite",
+    "migrations": ["src/persistence/migrations/*.js"],
+    "entities": ["src/persistence/entities/*.js"],
+    "cli": {
+        "migrationsDir": "src/persistence/migrations",
+        "entitiesDir": "src/persistence/entities "
+    }
+}

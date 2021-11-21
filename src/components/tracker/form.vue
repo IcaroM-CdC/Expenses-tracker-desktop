@@ -33,7 +33,13 @@
 						type="date"
 						@input="handleDataChange"
 						outlined
+						v-bind:prop="disabled"
 					></v-text-field>
+					<v-checkbox
+						:label="`Checkbox 1: ${formData.futureDate.toString()}`"
+						@change="handleCheckboxChange"
+
+					></v-checkbox>
 				</div>
 			<div id="btn-div">
 				<v-btn
@@ -62,7 +68,9 @@ export default {
 	name: 'ExpenseProfitForm',
 	data: () => ({
 		newTransactionState: false,
+		futureFinancialPosting: true,
 		formData: {
+			futureDate: false,
 			value: 0,
 			type: "",
 			date: {
@@ -130,6 +138,9 @@ export default {
 			this.formData.date.month = mounth
 			this.formData.date.year = year
 
+		},
+		handleCheckboxChange: function (event) {
+			this.formData.futureDate = event
 		}
 	},
 }
