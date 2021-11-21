@@ -34,7 +34,7 @@
 </template>
 
 <script>
-export default {
+// export default {
 	name: "Button_new"
 }
 </script>

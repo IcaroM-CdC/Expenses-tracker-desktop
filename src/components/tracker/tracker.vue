@@ -6,8 +6,16 @@
 		<div id="body">
 			<div id="side-bar">
 				<div id="side-bar-wrapper">
+					<SideBar/>
 				</div>
-				<Button_new></Button_new>
+<!--				<Button_new></Button_new>-->
+				<v-btn
+					x-large
+					color="#38C183"
+					v-on:click="handleNewTransactionBtnClick"
+				>
+					<span>Confirm</span>
+				</v-btn>
 			</div>
 			<div id="charts-info">
 				<div id="profits-expenses-div">
@@ -41,32 +49,58 @@
 					</div>
 				</div>
 				<div id="chart">
+
+					<TransactionsList></TransactionsList>
+
+
 				</div>
 			</div>
 		</div>
-		<div id="new-profit-expense-div">
 
-			<ExpenseProfitForm id="expense-profit-form"></ExpenseProfitForm>
+		<ExpenseProfitForm id="expense-profit-form" ref="form"></ExpenseProfitForm>
 
-		</div>
 	</div>
 </template>
 
 <script>
 	// import Chart from "./chart"
-	import TopBar from "./topBar"
-	import Button_new from "../singleComponents/button"
+	// import Button_new from "../singleComponents/button"
 	import ExpenseProfitForm from "./form"
+	import TopBar from "./topBar"
+	import SideBar from "./sideBar"
+	import TransactionsList from "./transactionsList"
 
 	export default {
 		name: "tracker",
+
+
+		data: () => ({
+			state: false,
+		}),
+
 		components: {
 			// Chart,
+			// Button_new,
+			ExpenseProfitForm,
+			TransactionsList,
 			TopBar,
-			Button_new,
-			ExpenseProfitForm
+			SideBar,
 		},
+
+		methods: {
+			handleNewTransactionBtnClick: function(){
+				this.$refs.form.setNewTransactionState(true);
+			},
+
+		},
+		// beforeMount() {
+		// 	console.log(this.$refs.form.getCancelClickState())
+		// },
+		// beforeUpdate() {
+		// 	console.log("aaaaa")
+		// }
 	}
+
 
 </script>
 
@@ -210,26 +244,17 @@
 
 	/* expenses and profits add screen */
 
-	#new-profit-expense-div {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background-color: #2B2E44;
-		opacity: 0.9;
-
-	}
 
 	#expense-profit-form {
 		width: 100%;
 		height: 100%;
-		background-color: #2B2E44;
-		display: flex;
+		position: absolute;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		background:rgba(57,60,80,0.98); /* define the opacity */
+		/*2B4B53*/
+		/*43,46,68*/
 	}
 
 </style>
