@@ -10,6 +10,14 @@
 						@input="handleTextfieldChange"
 						ref="value"
 					></v-text-field>
+					<v-text-field
+						label="Description"
+						prefix = ""
+						outlined
+						type="number"
+						@input="handleDescriptionChange"
+						ref="value"
+					></v-text-field>
 					<v-select
 						label="Type"
 						data-vv-name=""
@@ -64,86 +72,96 @@
 </template>
 
 <script>
-export default {
-	name: 'ExpenseProfitForm',
-	data: () => ({
-		newTransactionState: false,
-		futureFinancialPosting: true,
-		formData: {
-			futureDate: false,
-			value: 0,
-			type: "",
-			date: {
-				day: 0,
-				mounth: 0,
-				year: 0
+
+	import ExpenseQueries from "@/persistence/queries/a.ts"
+
+
+	export default {
+		name: 'ExpenseProfitForm',
+		data: () => ({
+			newTransactionState: false,
+			futureFinancialPosting: true,
+			formData: {
+				futureDate: false,
+				value: 0,
+				type: "",
+				description: "",
+				date: {
+					day: 0,
+					mounth: 0,
+					year: 0
+				}
+			},
+			selectorItems: ["Expense", "Profit"],
+			valueError: false,
+			typeError: false,
+			dateError: false,
+		}),
+
+		methods: {
+			handleCancelBtnClick: function () {
+				this.setNewTransactionState(false)
+			},
+			handleSubmitBtnClick: function () {
+
+				/*
+					these group of conditional statement check if the input fiels have only the expected behavior
+				*/
+
+				if (this.formData.value === 0 || this.formData.value < 1){
+					console.log("deu ruim")
+
+					this.valueError = true
+				}
+				else if (this.formData.type === "") {
+					console.log("deu ruim")
+
+					this.typeError = true
+				}
+				else if (this.formData.date.day === 0 || this.formData.date.month === 0 || this.formData.date.year === 0){
+					console.log("deu ruim")
+
+					this.dateError = true
+				}
+
+				else {
+					console.log("deu tudo certo")
+
+					let expenseQueries = new ExpenseQueries()
+					expenseQueries.create()
+				}
+
+			},
+			setNewTransactionState: function (value) {
+				this.newTransactionState = value
+			},
+
+
+
+			handleTextfieldChange: function (value) {
+				this.formData.value = value
+				console.log(this.formData.value)
+			},
+			handleDescriptionChange: function (value) {
+				this.formData.description = value
+			},
+			handleSelectorChange: function (value) {
+				this.formData.type = value
+				console.log(this.formData.type)
+			},
+			handleDataChange: function (value) {
+				let [year, mounth, day] = value.toString().split("-")
+
+				this.formData.date.day = day
+				this.formData.date.month = mounth
+				this.formData.date.year = year
+
+			},
+			handleCheckboxChange: function (event) {
+				this.formData.futureDate = event
 			}
 		},
-		selectorItems: ["Expense", "Profit"],
-		valueError: false,
-		typeError: false,
-		dateError: false,
-
-	}),
-
-	methods: {
-		handleCancelBtnClick: function () {
-			this.setNewTransactionState(false)
-		},
-		handleSubmitBtnClick: function () {
-
-			/*
-				these group of conditional statement check if the input fiels have only the expected behavior
-			*/
-
-			if (this.formData.value === 0 || this.formData.value < 1){
-				console.log("deu ruim")
-
-				this.valueError = true
-			}
-			else if (this.formData.type === "") {
-				console.log("deu ruim")
-
-				this.typeError = true
-			}
-			else if (this.formData.date.day === 0 || this.formData.date.month === 0 || this.formData.date.year === 0){
-				console.log("deu ruim")
-
-				this.dateError = true
-			}
-
-			else {
-				console.log("deu tudo certo")
-			}
-
-		},
-		setNewTransactionState: function (value) {
-			this.newTransactionState = value
-		},
-
-
-
-		handleTextfieldChange: function (value) {
-			this.formData.value = value
-			console.log(this.formData.value)
-		},
-		handleSelectorChange: function (value) {
-			this.formData.type = value
-			console.log(this.formData.type)
-		},
-		handleDataChange: function (value) {
-			let [year, mounth, day] = value.toString().split("-")
-
-			this.formData.date.day = day
-			this.formData.date.month = mounth
-			this.formData.date.year = year
-
-		},
-		handleCheckboxChange: function (event) {
-			this.formData.futureDate = event
-		}
-	},
-}
+	}
 </script>
 
 <style>
