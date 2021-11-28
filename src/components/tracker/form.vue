@@ -41,7 +41,6 @@
 						type="date"
 						@input="handleDataChange"
 						outlined
-						v-bind:prop="disabled"
 					></v-text-field>
 					<v-checkbox
 						:label="`Checkbox 1: ${formData.futureDate.toString()}`"
@@ -73,9 +72,6 @@
 
 <script>
 
-	import ExpenseQueries from "@/persistence/queries/a.ts"
-
-
 	export default {
 		name: 'ExpenseProfitForm',
 		data: () => ({
@@ -97,6 +93,11 @@
 			typeError: false,
 			dateError: false,
 		}),
+
+		mounted () {
+
+
+		},
 
 		methods: {
 			handleCancelBtnClick: function () {
@@ -127,16 +128,12 @@
 				else {
 					console.log("deu tudo certo")
 
-					let expenseQueries = new ExpenseQueries()
-					expenseQueries.create()
 				}
 
 			},
 			setNewTransactionState: function (value) {
 				this.newTransactionState = value
 			},
-
-
 
 			handleTextfieldChange: function (value) {
 				this.formData.value = value

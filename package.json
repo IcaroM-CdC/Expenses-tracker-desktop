@@ -13,6 +13,7 @@
     "main": "background.js",
     "dependencies": {
         "apexcharts": "^3.30.0",
+        "aws-sdk": "^2.1037.0",
         "core-js": "^3.6.5",
         "sqlite3": "^5.0.2",
         "typeorm": "^0.2.41",
@@ -26,6 +27,7 @@
         "@vue/cli-service": "~4.5.0",
         "electron": "^13.0.0",
         "electron-devtools-installer": "^3.1.0",
+        "electron-rebuild": "^3.2.5",
         "sass": "~1.32.0",
         "sass-loader": "^10.0.0",
         "ts-node-dev": "^1.1.8",
