@@ -1,19 +1,19 @@
 <template>
 	<div id="main-div">
-		<div class="list-element">
-			<div class="list-element-side-card"></div>
-			<img class="list-element-img" src="@/assets/creditCard.png" />
-			<span class="list-element-value">44,00</span>
-			<span class="list-element-description">Lorem Ipsum is simply dummy text of the printing</span>
+<!--		<div class="list-element">-->
+<!--			<div class="list-element-side-card"></div>-->
+<!--			<img class="list-element-img" src="@/assets/creditCard.png" />-->
+<!--			<span class="list-element-value">44,00</span>-->
+<!--			<span class="list-element-description">Lorem Ipsum is simply dummy text of the printing</span>-->
 
-		</div>
-		<div class="list-element-expense">
-			<div class="list-element-side-card-expense"></div>
-			<img class="list-element-img" src="@/assets/creditCard.png" />
-			<span class="list-element-value">44,00</span>
-			<span class="list-element-description">Lorem Ipsum is simply dummy text of the printing</span>
+<!--		</div>-->
+<!--		<div class="list-element-expense">-->
+<!--			<div class="list-element-side-card-expense"></div>-->
+<!--			<img class="list-element-img" src="@/assets/creditCard.png" />-->
+<!--			<span class="list-element-value">44,00</span>-->
+<!--			<span class="list-element-description">Lorem Ipsum is simply dummy text of the printing</span>-->
 
-		</div>
+<!--		</div>-->
 	</div>
 </template>
 

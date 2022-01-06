@@ -14,7 +14,7 @@
 						label="Description"
 						prefix = ""
 						outlined
-						type="number"
+						type="text"
 						@input="handleDescriptionChange"
 						ref="value"
 					></v-text-field>
@@ -72,6 +72,8 @@
 
 <script>
 
+	import DatabaseAPI from "../../persistence/databaseAPI";
+
 	export default {
 		name: 'ExpenseProfitForm',
 		data: () => ({
@@ -84,7 +86,7 @@
 				description: "",
 				date: {
 					day: 0,
-					mounth: 0,
+					month: 0,
 					year: 0
 				}
 			},
@@ -96,7 +98,6 @@
 
 		mounted () {
 
-
 		},
 
 		methods: {
@@ -104,31 +105,34 @@
 				this.setNewTransactionState(false)
 			},
 			handleSubmitBtnClick: function () {
-
 				/*
 					these group of conditional statement check if the input fiels have only the expected behavior
 				*/
 
 				if (this.formData.value === 0 || this.formData.value < 1){
-					console.log("deu ruim")
-
 					this.valueError = true
 				}
 				else if (this.formData.type === "") {
-					console.log("deu ruim")
-
 					this.typeError = true
 				}
 				else if (this.formData.date.day === 0 || this.formData.date.month === 0 || this.formData.date.year === 0){
-					console.log("deu ruim")
-
 					this.dateError = true
 				}
 
 				else {
-					console.log("deu tudo certo")
 
+					const databaseAPI = new DatabaseAPI()
+					databaseAPI.addTransaction(
+						this.formData.value,
+						this.formData.type,
+						this.formData.description,
+						this.formData.date,
+						this.formData.date
+					)
 				}
+
+				this.setNewTransactionState(false)
+				this.$parent.refreshData()
 
 			},
 			setNewTransactionState: function (value) {
@@ -137,26 +141,27 @@
 
 			handleTextfieldChange: function (value) {
 				this.formData.value = value
-				console.log(this.formData.value)
+				// console.log(this.formData.value)
 			},
 			handleDescriptionChange: function (value) {
 				this.formData.description = value
 			},
 			handleSelectorChange: function (value) {
 				this.formData.type = value
-				console.log(this.formData.type)
+				// console.log(this.formData.type)
 			},
 			handleDataChange: function (value) {
-				let [year, mounth, day] = value.toString().split("-")
+				let [year, month, day] = value.toString().split("-")
 
 				this.formData.date.day = day
-				this.formData.date.month = mounth
+				this.formData.date.month = month
 				this.formData.date.year = year
 
 			},
 			handleCheckboxChange: function (event) {
 				this.formData.futureDate = event
-			}
+			},
+
 		},
 	}
 </script>

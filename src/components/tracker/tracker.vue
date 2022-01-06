@@ -3,7 +3,7 @@
 		<div id="top-bar">
 			<TopBar></TopBar>
 		</div>
-		<div id="body">
+		<div id="body" ref="main">
 			<div id="side-bar">
 				<div id="side-bar-wrapper">
 					<SideBar/>
@@ -24,28 +24,28 @@
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Total profits</span>
-							<span class="profit-loan-card-value">R$ 200,00</span>
+							<span class="profit-loan-card-value">R$ {{ monetaryData.totalProfit }}</span>
 						</div>
 						<img id="profit-loan-card-image-profit" src="@/assets/moneyUp.png"  alt=""/>
 					</div>
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Total expenses</span>
-							<span class="profit-loan-card-value">R$ 40,00</span>
+							<span class="profit-loan-card-value">R$ {{ monetaryData.totalExpenses }}</span>
 						</div>
 						<img id="profit-loan-card-image-expense" src="@/assets/moneyDown.png" />
 					</div>
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Upcoming</span>
-							<span class="profit-loan-card-value">R$ 4.000,00</span>
+							<span class="profit-loan-card-value">R$ {{ monetaryData.upcoming }}</span>
 						</div>
 						<img id="profit-loan-card-image-upcoming" src="@/assets/moneyStack.png" />
 					</div>
 					<div class="profit-loan-card">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Balance</span>
-							<span class="profit-loan-card-value">R$ 160,00</span>
+							<span class="profit-loan-card-value">R$ {{ monetaryData.balance }}</span>
 						</div>
 						<img id="profit-loan-card-image-balance" src="@/assets/bank.png" />
 					</div>
@@ -65,7 +65,8 @@
 </template>
 
 <script>
-	// import Chart from "./chart"
+
+	import DatabaseAPI from "../../persistence/databaseAPI";
 	import Button_new from "../singleComponents/button"
 	import ExpenseProfitForm from "./form"
 	import TopBar from "./topBar"
@@ -78,7 +79,17 @@
 
 		data: () => ({
 			state: false,
+			monetaryData: {
+				totalProfit: 0,
+				totalExpenses: 0,
+				upcoming: 0,
+				balance: 0
+			}
 		}),
+
+		mounted () {
+			this.refreshData()
+		},
 
 		components: {
 			// Chart,
@@ -92,6 +103,25 @@
 		methods: {
 			handleNewTransactionBtnClick: function(){
 				this.$refs.form.setNewTransactionState(true);
+			},
+
+			refreshData: function(){
+
+				const databaseAPI = new DatabaseAPI()
+				const data = databaseAPI.listTransactions()
+
+				data.forEach(a => {
+					console.log(typeof (a))
+
+					if (a.type === "Profit"){
+						this.monetaryData.totalProfit = this.monetaryData.totalProfit + parseFloat(a.value)
+					}
+					if (a.type === "Expense"){
+						this.monetaryData.totalExpenses = this.monetaryData.totalExpenses + parseFloat(a.value)
+					}
+				});
+
+				this.monetaryData.balance = this.monetaryData.totalProfit - this.monetaryData.totalExpenses
 			},
 			a: function(e){
 				console.log(e)
