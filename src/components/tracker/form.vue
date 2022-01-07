@@ -133,6 +133,7 @@
 
 				this.setNewTransactionState(false)
 				this.$parent.refreshData()
+				this.$parent.refreshList()
 
 			},
 			setNewTransactionState: function (value) {

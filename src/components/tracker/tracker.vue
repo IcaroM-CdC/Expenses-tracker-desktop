@@ -11,13 +11,6 @@
 					<Button_new @newTransactionState="a">
 
 					</Button_new>
-<!--				<v-btn-->
-<!--					x-large-->
-<!--					color="#38C183"-->
-<!--					v-on:click="handleNewTransactionBtnClick"-->
-<!--				>-->
-<!--					<span>Confirm</span>-->
-<!--				</v-btn>-->
 			</div>
 			<div id="charts-info">
 				<div id="profits-expenses-div">
@@ -52,7 +45,7 @@
 				</div>
 				<div id="chart">
 
-					<TransactionsList></TransactionsList>
+					<TransactionsList ref="list"></TransactionsList>
 
 
 				</div>
@@ -89,6 +82,7 @@
 
 		mounted () {
 			this.refreshData()
+			this.refreshList()
 		},
 
 		components: {
@@ -110,8 +104,13 @@
 				const databaseAPI = new DatabaseAPI()
 				const data = databaseAPI.listTransactions()
 
+				this.monetaryData.totalProfit = 0
+				this.monetaryData.totalExpenses = 0
+				this.monetaryData.balance = 0
+
 				data.forEach(a => {
 					console.log(typeof (a))
+
 
 					if (a.type === "Profit"){
 						this.monetaryData.totalProfit = this.monetaryData.totalProfit + parseFloat(a.value)
@@ -122,10 +121,16 @@
 				});
 
 				this.monetaryData.balance = this.monetaryData.totalProfit - this.monetaryData.totalExpenses
+
+				console.log(this.monetaryData)
+
 			},
 			a: function(e){
 				console.log(e)
 				this.handleNewTransactionBtnClick()
+			},
+			refreshList: function(){
+				this.$refs.list.refreshData()
 			}
 
 		},
