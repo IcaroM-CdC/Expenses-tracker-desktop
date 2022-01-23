@@ -83,6 +83,7 @@
 				futureDate: false,
 				value: 0,
 				type: "",
+				isExpense: false,
 				description: "",
 				date: {
 					day: 0,
@@ -122,12 +123,24 @@
 				else {
 
 					const databaseAPI = new DatabaseAPI()
+
+					console.log("tipo")
+					console.log(this.formData.type)
+
+					if (this.formData.type === "Expense"){
+						this.isExpense = true;
+					}
+					else {
+						this.isExpense = false
+					}
+
 					databaseAPI.addTransaction(
 						this.formData.value,
 						this.formData.type,
 						this.formData.description,
 						this.formData.date,
-						this.formData.date
+						this.formData.date,
+						this.isExpense
 					)
 				}
 

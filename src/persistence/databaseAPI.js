@@ -16,21 +16,21 @@ export default class DatabaseAPI {
 		}
 	}
 
-	addTransaction(value, type, description, createdDate, releaseDate){
+	addTransaction(value, type, description, createdDate, releaseDate, isExpense){
 		const transaction = {
 			id: v4(),
 			value: value,
 			type: type,
 			description: description,
 			createdDate: createdDate,
-			releaseDate: releaseDate
+			releaseDate: releaseDate,
+			isExpense: isExpense
 		}
 
 		const database = window.localStorage.getItem("database")
 		const parsedData = JSON.parse(database)
 
-		console.log(parsedData)
-		console.log(typeof(parsedData))
+		// console.log(parsedData)
 
 
 		parsedData.data.push(transaction)

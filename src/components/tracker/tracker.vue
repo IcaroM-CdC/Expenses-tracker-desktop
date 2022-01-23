@@ -126,7 +126,7 @@
 
 			},
 			a: function(e){
-				console.log(e)
+				// console.log(e)
 				this.handleNewTransactionBtnClick()
 			},
 			refreshList: function(){
@@ -146,6 +146,11 @@
 </script>
 
 <style>
+
+	::selection {
+		color: #F4F4F4;
+		background: transparent;
+	}
 
 	#main-div {
 		display: flex;
@@ -235,28 +240,37 @@
 		margin-left: 1vw;
 		font-size: 3vh;
 		margin-bottom: 1vh;
+		user-select: none;
 	}
 
 	.profit-loan-card-value {
-		color: #FEFEFF;
+		color: #F4B74A;
 		margin-left: 1vw;
 		font-size: 3vh
 	}
 
 	#profit-loan-card-image-profit {
 		width: 20%;
+		user-select: none;
+		-webkit-user-drag: none;
 	}
 
 	#profit-loan-card-image-expense {
 		width: 20%;
+		user-select: none;
+		-webkit-user-drag: none;
 	}
 
 	#profit-loan-card-image-upcoming {
 		width: 20%;
+		user-select: none;
+		-webkit-user-drag: none;
 	}
 
 	#profit-loan-card-image-balance{
 		width: 20%;
+		user-select: none;
+		-webkit-user-drag: none;
 	}
 
 	/* ###################### */
