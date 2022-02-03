@@ -3,7 +3,7 @@
 		<div id="top-bar">
 			<TopBar></TopBar>
 		</div>
-		<div id="body" ref="main">
+		<div id="body" ref="main" class="no-drag">
 			<div id="side-bar">
 				<div id="side-bar-wrapper">
 					<SideBar/>
@@ -12,41 +12,41 @@
 
 					</Button_new>
 			</div>
-			<div id="charts-info">
-				<div id="profits-expenses-div">
-					<div class="profit-loan-card">
-						<div class="profit-loan-card-wrapper">
-							<span class="profit-loan-card-title">Total profits</span>
-							<span class="profit-loan-card-value">R$ {{ monetaryData.totalProfit }}</span>
+			<div id="charts-info" class="no-drag">
+				<div id="profits-expenses-div" class="no-drag">
+					<div class="profit-loan-card no-drag">
+						<div class="profit-loan-card-wrapper no-drag">
+							<span class="profit-loan-card-title no-drag">Total profits</span>
+							<span class="profit-loan-card-value no-drag">R$ {{ monetaryData.totalProfit }}</span>
 						</div>
-						<img id="profit-loan-card-image-profit" src="@/assets/moneyUp.png"  alt=""/>
+						<img id="profit-loan-card-image-profit" src="@/assets/moneyUp.png"  alt="Profit"/>
 					</div>
-					<div class="profit-loan-card">
-						<div class="profit-loan-card-wrapper">
-							<span class="profit-loan-card-title">Total expenses</span>
-							<span class="profit-loan-card-value">R$ {{ monetaryData.totalExpenses }}</span>
+					<div class="profit-loan-card no-drag">
+						<div class="profit-loan-card-wrapper no-drag">
+							<span class="profit-loan-card-title no-drag">Total expenses</span>
+							<span class="profit-loan-card-value no-drag">R$ {{ monetaryData.totalExpenses }}</span>
 						</div>
-						<img id="profit-loan-card-image-expense" src="@/assets/moneyDown.png" />
+						<img id="profit-loan-card-image-expense" src="@/assets/moneyDown.png" alt="expense" />
 					</div>
-					<div class="profit-loan-card">
+					<div class="profit-loan-card no-drag">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Upcoming</span>
 							<span class="profit-loan-card-value">R$ {{ monetaryData.upcoming }}</span>
 						</div>
-						<img id="profit-loan-card-image-upcoming" src="@/assets/moneyStack.png" />
+						<img id="profit-loan-card-image-upcoming" src="@/assets/moneyStack.png" alt="upcoming" />
 					</div>
-					<div class="profit-loan-card">
+					<div class="profit-loan-card no-drag">
 						<div class="profit-loan-card-wrapper">
 							<span class="profit-loan-card-title">Balance</span>
 							<span class="profit-loan-card-value">R$ {{ monetaryData.balance }}</span>
 						</div>
-						<img id="profit-loan-card-image-balance" src="@/assets/bank.png" />
+						<img id="profit-loan-card-image-balance" src="@/assets/bank.png" alt="balance"/>
 					</div>
 				</div>
-				<div id="chart">
+				<div id="content-div">
 
-					<TransactionsList ref="list"></TransactionsList>
-
+<!--					<TransactionsList ref="list"></TransactionsList>-->
+						<Chart></Chart>
 
 				</div>
 			</div>
@@ -65,6 +65,7 @@
 	import TopBar from "./topBar"
 	import SideBar from "./sideBar"
 	import TransactionsList from "./transactionsList"
+	import Chart from "./chart"
 
 	export default {
 		name: "tracker",
@@ -86,7 +87,7 @@
 		},
 
 		components: {
-			// Chart,
+			Chart,
 			Button_new,
 			ExpenseProfitForm,
 			TransactionsList,
@@ -159,7 +160,7 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100vh;
-		background-color: #2B2E44;
+    	background-color: #2B2E44;
 	}
 
 	#top-bar {
@@ -275,7 +276,7 @@
 
 	/* ###################### */
 
-	#chart {
+	#content-div {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -310,6 +311,10 @@
 		background:rgba(57,60,80,0.98); /* define the opacity */
 		/*2B4B53*/
 		/*43,46,68*/
+	}
+
+	.no-drag {
+	  -webkit-user-drag: none;
 	}
 
 </style>

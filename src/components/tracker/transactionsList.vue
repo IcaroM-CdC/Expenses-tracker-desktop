@@ -1,14 +1,14 @@
 <template>
 	<div id="main-div">
 		<ul id="transactionsList">
-			<li v-for="item in this.transactions" :key="item.id" class="listElement">
+			<li v-for="item in this.transactions" :key="item.id" class="listElement no-drag">
 					<div class="list-element-side-card" :style="[item.isExpense ? {'background': '#F34555'} :{'background': '#00CF87'}]"></div>
 					<div class="list-element-img-wraper">
 						<img class="list-element-img" src="@/assets/carteira.png"  alt="a"/>
 					</div>
-					<span class="list-element-value">R$ {{item.value}}</span>
-					<span class="list-element-description">{{item.description}}</span>
-					<span class="list-element-date">{{item.createdDate.day}}</span>
+					<span class="list-element-value no-drag">R$ {{item.value}}</span>
+					<span class="list-element-description no-drag">{{item.description}}</span>
+					<span class="list-element-date no-drag">{{item.createdDate.day}}</span>
 			</li>
 		</ul>
 	</div>
@@ -51,6 +51,7 @@
 	::selection {
 		color: #F4B74A;
 		background: transparent;
+	  	-webkit-user-drag: none;
 	}
 
 	#main-div {
@@ -164,6 +165,8 @@
 		align-items: center;
 		justify-content: center;
 	}
+
+
 	.list-element-description {
 		display: flex;
 		margin-left: 5%;
@@ -175,5 +178,8 @@
 
 	}
 
+	.no-drag {
+	  -webkit-user-drag: none;
+	}
 
 </style>
