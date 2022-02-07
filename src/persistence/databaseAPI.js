@@ -43,9 +43,8 @@ export default class DatabaseAPI {
 		const database = window.localStorage.getItem("database")
 		const parsedData = JSON.parse(database)
 
-		if (parameter == "all"){
-			const transactions = parsedData.data
-			return transactions
+		if (parameter === "all"){
+			return parsedData.data
 		}
 
 		else {

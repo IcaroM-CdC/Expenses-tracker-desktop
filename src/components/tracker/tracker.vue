@@ -46,7 +46,7 @@
 				<div id="content-div">
 
 <!--					<TransactionsList ref="list"></TransactionsList>-->
-						<Chart></Chart>
+						<Chart id="chart-div"></Chart>
 
 				</div>
 			</div>
@@ -110,9 +110,6 @@
 				this.monetaryData.balance = 0
 
 				data.forEach(a => {
-					console.log(typeof (a))
-
-
 					if (a.type === "Profit"){
 						this.monetaryData.totalProfit = this.monetaryData.totalProfit + parseFloat(a.value)
 					}
@@ -126,21 +123,15 @@
 				console.log(this.monetaryData)
 
 			},
-			a: function(e){
-				// console.log(e)
+			a: function(){
 				this.handleNewTransactionBtnClick()
 			},
 			refreshList: function(){
 				this.$refs.list.refreshData()
+				// asdad
 			}
 
 		},
-		// beforeMount() {
-		// 	console.log(this.$refs.form.getCancelClickState())
-		// },
-		// beforeUpdate() {
-		// 	console.log("aaaaa")
-		// }
 	}
 
 
@@ -148,9 +139,18 @@
 
 <style>
 
+
 	::selection {
 		color: #F4F4F4;
 		background: transparent;
+	}
+
+	#chart-div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
 	}
 
 	#main-div {
